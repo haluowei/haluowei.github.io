@@ -16,13 +16,3 @@ jobs:
       - name: 打包镜像, 上传 Docker Hub
         run: |
           docker run -d --name memos -p 5230:5230 -v ~/.memos/:/var/opt/memos ghcr.io/usememos/memos:latest
-
-      - name: 登录服务器, 执行脚本
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: root
-          password: ${{ secrets.REMOTE_PASSWORD }}
-          # 执行脚本
-          script: |
-            ./deploy.sh
