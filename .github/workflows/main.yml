@@ -15,10 +15,7 @@ jobs:
           node-version: 14
       - name: 打包镜像, 上传 Docker Hub
         run: |
-          docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }}
-          docker build --platform linux/amd64 -t [name]:latest  .
-          docker tag [name]:latest ${{ secrets.DOCKER_REPOSITORY }}
-          docker push ${{ secrets.DOCKER_REPOSITORY }}
+          docker run -d --name memos -p 5230:5230 -v ~/.memos/:/var/opt/memos ghcr.io/usememos/memos:latest
 
       - name: 登录服务器, 执行脚本
         uses: appleboy/ssh-action@master
