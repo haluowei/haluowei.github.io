@@ -1,13 +1,6 @@
 name: memos
 # 触发条件为 push
-on: 
- pull_request:
-    types:
-      - opened
-    paths:
-      - '.github/workflows/**'
-      - '.github/CODEOWNERS'
-      - 'package*.json'
+on: workflow_dispatch
 # 任务
 jobs:
   test:
